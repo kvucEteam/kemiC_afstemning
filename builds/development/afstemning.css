@@ -1,0 +1,11 @@
+body{line-height: 1; font-size: 18px}
+
+
+.left{float: left;}
+.right{float: right;}
+.clear{clear: both;}
+
+.Wrapper{padding: 20px; border: 1px solid #000;}
+.Spacer{width: 140px; display: inline-block; font-weight: 700;}
+.LaTexInput{background-color: #0F0;}
+.HtmlOutput{background-color: #FF0;}
