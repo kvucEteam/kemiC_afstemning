@@ -24,7 +24,7 @@ function ReturnUniqueArray(MyArray){
 }
 
 console.log("ReturnUniqueArray : " + ReturnUniqueArray([1,2,3,4,1,2,3,4]) );
-console.log("ReturnUniqueArray : " + ReturnUniqueArray(["a","b","c","d","e","a","b","c"]) );
+console.log("ReturnUniqueArray : " + ReturnUniqueArray(["a","b","c","d","e","a","b","c"]) ); 
 
 
 
