@@ -1,11 +1,57 @@
-body{line-height: 1; font-size: 18px}
+body{line-height: 1; }
 
+h1{margin: 40px 30px; padding: 0px; line-height: 0;}
+
+h4{margin: 0px;}
 
 .left{float: left;}
 .right{float: right;}
 .clear{clear: both;}
 
-.Wrapper{padding: 20px; border: 1px solid #000;}
-.Spacer{width: 140px; display: inline-block; font-weight: 700;}
+.Wrapper{padding: 20px; /*border: 1px solid #000;*/}
+.QuestionCounter{width: 140px; display: inline-block; font-weight: 700;}
+.QuestionCounter h4 {margin: 0px;}
 .LaTexInput{background-color: #0F0;}
 .HtmlOutput{background-color: #FF0;}
+
+/*.Reactants, .ChemArrow, .Products{font-size: 250%; font-weight: 200;}*/
+.Reactants{}
+.ChemWrap {font-size: 250%; font-weight: 200; margin-top: 20px; margin-left: 0px;}
+.QuestionCounter {font-size: 200%; font-weight: 200; padding-top: 0%}
+.BtnWrap{margin-top: 30px;}
+.InstructionWrap{margin-top: 0%; margin-left: 60px;}
+
+.ChemArrowWrap{}
+#ChemArrow{width: 5%; }
+
+#right-arrow_1_{color: #F00;}
+
+/*.ScoreWrapper{display: inline-block; padding: 3px; border: 1px solid #717272;}*/
+
+.ScoreWrapper{width: 160px; border: 1px solid #000; padding: 10px;}
+
+.TaskNumberImg{width: 2.25%;}
+
+
+/* ============================================= 
+		Drop-down styling
+============================================= */
+
+.bund_select {
+	/*border: 0 !important; */       /*Removes border*/
+	/*-webkit-appearance: none;*/          /*Removes default chrome and safari style*/
+    /*-moz-appearance: none;  */           /* Removes Default Firefox style*/
+    background-color: #FFF;
+    color: #000;
+    border: 1px solid #AAA;
+}
+
+.CoeffNum{font-size: 100%; margin: 0px 5px; border-style: none; }
+.CoeffNum select {font-size: 90%; }  /* font-size: 60%; */
+.CoeffNum:first-child {margin: 0px 5px 0px 0px;}
+
+.IndexNum{font-size: 70%;  margin: 0px 5px;  border-style: none; }
+.IndexNum select {font-size: 70%; }
+
+.ChargeNum{font-size: 70%;  margin: 0px 5px;  border-style: none; }
+.ChargeNum select {font-size: 70%; }
