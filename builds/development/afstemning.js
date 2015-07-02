@@ -58,7 +58,9 @@ var ChemDataObj = { ChemEq: null,
                     NumOfAttempts: 0
                 };
 
-var TotScoreObj = { TotNumOfCorrectAnswers: 0,
+var TotScoreObj = { NewTotNumOfWrongAnswers: 0,
+                    MemTotNumOfWrongAnswers: 0,
+                    TotNumOfCorrectAnswers: 0,
                     TotNumOfWrongAnswers: 0,
                     TotNumOfAttempts: 0
                 };
@@ -66,6 +68,9 @@ var TotScoreObj = { TotNumOfCorrectAnswers: 0,
 var QuestionNum = 0;
 
 var Level = 1; // Level assigns the difficulty level of the task
+
+
+var MaxNumOfElements = 10;
 
 
 
@@ -477,6 +482,7 @@ function GetSelectedData(TargetClass, Delimiter){  // ChemWrap2
 function SetTimerAndFadeout(Selector, TimeTimeout, TimeFadeOut){
     TimerId = setTimeout( function(){ 
         $(Selector).fadeOut(TimeFadeOut, function() {
+            $( Selector ).parent().addClass("UnityFactor");
             $( Selector ).remove();
             console.log("SetTimerAndFadeout - OK");
         });
@@ -573,7 +579,7 @@ function ResetQuiz(){
 }
 
 
-function ShowStudentScore(Use_UserMsgBox){
+function ShowStudentScore_OLD(Use_UserMsgBox){
     var HTML = '';  
 
     HTML += '<div class="ScoreWrapper">';
@@ -598,6 +604,26 @@ function ShowStudentScore(Use_UserMsgBox){
 
     if (Use_UserMsgBox) 
         UserMsgBox("body", "Du klarede det med " + TotScoreObj.TotNumOfWrongAnswers + " fejl Se resultaterne her <br/>" + HTML);
+    else
+        $(".ShowStudentScore").html( HTML );
+
+    // Update numbers:
+    $(".ScoreAttempts").text( TotScoreObj.TotNumOfAttempts ); 
+    $(".ScoreCorrect").text( TotScoreObj.TotNumOfCorrectAnswers );
+    $(".ScoreFail").text( TotScoreObj.TotNumOfWrongAnswers );
+    $(".ScoreStat").text( (TotScoreObj.TotNumOfCorrectAnswers/(TotScoreObj.TotNumOfAttempts + ReturnTotNumOfAnswers("#") - ReturnNumOfQuestions() )*100).toFixed(2) + "%" ); 
+
+    if (Use_UserMsgBox) 
+        return 0;
+}
+
+
+function ShowStudentScore(Use_UserMsgBox){
+    var HTML = '';  
+
+    if (Use_UserMsgBox) 
+        // UserMsgBox("body", "Du klarede det med " + TotScoreObj.TotNumOfWrongAnswers + " fejl Se resultaterne her <br/>");
+        UserMsgBox("body", "Flot, du har lavet "+MaxNumOfElements+" opgaver korrekt! <br/> Du havde " + TotScoreObj.NewTotNumOfWrongAnswers + ' fejl undervejs. <br/>Klik "Prøv igen" for at prøve igen med '+MaxNumOfElements+' nye opgaver.');
     else
         $(".ShowStudentScore").html( HTML );
 
@@ -666,11 +692,11 @@ function GiveQuestions(JsonData){
     console.log("GiveQuestions - QuizArray 1: " + QuizArray);
     QuizArray = ShuffelArray(QuizArray);
     console.log("GiveQuestions - QuizArray 2: " + QuizArray);
-    QuizArray = ReturMaxNumOfElements(QuizArray, 10);
+    QuizArray = ReturMaxNumOfElements(QuizArray, MaxNumOfElements);
     console.log("GiveQuestions - QuizArray 3: " + QuizArray);
     var QuizNum = QuizArray[QuestionNum];
 
-    $(".QuestionCounter").html("<h4>"+String(QuestionNum+1)+"/"+String(QuizArray.length)+"</h4>");
+    $(".QuestionCounter").html(String(QuestionNum+1)+"/"+String(QuizArray.length));
     // ChemLatexToHtml( JsonData[QuestionNum].ChemEq );
     ChemLatexToHtml( JsonData[QuizNum].ChemEq );
     $(".ChemWrap").html( ChemDataObj.ChemEqHtmlDropDown );
@@ -709,6 +735,12 @@ function GiveQuestions(JsonData){
             if ($(".CoeffNum").text().length == 0) $(".CoeffNum").remove();
         }
         console.log("GiveQuestions - ErrStr: " + ErrStr);
+
+        if ((ChemDataObj.NumOfWrongAnswers > 0) && (TotScoreObj.MemTotNumOfWrongAnswers != ChemDataObj.NumOfWrongAnswers)) {
+            TotScoreObj.NewTotNumOfWrongAnswers += 1;
+            TotScoreObj.MemTotNumOfWrongAnswers = ChemDataObj.NumOfWrongAnswers;
+            $(".ErrorCount").text(TotScoreObj.NewTotNumOfWrongAnswers);
+        }
     });
 
     $( document ).on('click', ".NextQuestion", function(event){
@@ -722,7 +754,8 @@ function GiveQuestions(JsonData){
         ResetQuiz();
         ++QuestionNum;
         console.log("GiveQuestions - QuestionNum: " + QuestionNum);
-        $(".QuestionCounter").text(String(QuestionNum+1)+"/"+String(ReturnNumOfQuestions()));
+        // $(".QuestionCounter").text(String(QuestionNum+1)+"/"+String(ReturnNumOfQuestions()));
+        $(".QuestionCounter").html(String(QuestionNum+1)+"/"+String(QuizArray.length));
         QuizNum = QuizArray[QuestionNum];
         ChemLatexToHtml( JsonData[QuizNum].ChemEq );
         $(".ChemWrap").html( ChemDataObj.ChemEqHtmlDropDown );
