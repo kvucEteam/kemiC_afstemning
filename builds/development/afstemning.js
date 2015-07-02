@@ -623,7 +623,7 @@ function ShowStudentScore(Use_UserMsgBox){
 
     if (Use_UserMsgBox) 
         // UserMsgBox("body", "Du klarede det med " + TotScoreObj.TotNumOfWrongAnswers + " fejl Se resultaterne her <br/>");
-        UserMsgBox("body", "Flot, du har lavet "+MaxNumOfElements+" opgaver korrekt! <br/> Du havde " + TotScoreObj.NewTotNumOfWrongAnswers + ' fejl undervejs. <br/>Klik "Prøv igen" for at prøve igen med '+MaxNumOfElements+' nye opgaver.');
+        UserMsgBox("body", "<span class='feedbackbox_txtstyle_overskrift'>Flot</span><br/>Du har lavet "+MaxNumOfElements+" opgaver korrekt. <br/> Du havde " + TotScoreObj.NewTotNumOfWrongAnswers + ' fejl undervejs. <br/><br/>Klik på "Prøv igen" knappen for at løse '+MaxNumOfElements+' nye opgaver.');
     else
         $(".ShowStudentScore").html( HTML );
 
