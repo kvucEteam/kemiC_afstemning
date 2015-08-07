@@ -686,7 +686,7 @@ function GiveQuestions(JsonData){
 
     var OriginalInstruction = $("#QuestionTask").html();
 
-    $("#TaskNumber").html('<img class="TaskNumberImg" src="../../../library/img/TaskNumbers_'+Level+'.svg"/>');
+    $("#TaskNumber").html('<img class="TaskNumberImg" src="../library/img/TaskNumbers_'+Level+'.svg"/>');
 
     QuizArray = ReturnQuizArray(JsonData);
     console.log("GiveQuestions - QuizArray 1: " + QuizArray);
@@ -700,7 +700,7 @@ function GiveQuestions(JsonData){
     // ChemLatexToHtml( JsonData[QuestionNum].ChemEq );
     ChemLatexToHtml( JsonData[QuizNum].ChemEq );
     $(".ChemWrap").html( ChemDataObj.ChemEqHtmlDropDown );
-    $(".ChemArrowWrap").html('<img id="ChemArrow" src="../../../library/img/glyphicon_reaktionspil_black2.svg" alt="Reaktionpil" />');
+    $(".ChemArrowWrap").html('<img id="ChemArrow" src="../library/img/glyphicon_reaktionspil_black2.svg" alt="Reaktionpil" />');
 
     var ErrStr = "";
 
@@ -760,7 +760,7 @@ function GiveQuestions(JsonData){
         ChemLatexToHtml( JsonData[QuizNum].ChemEq );
         $(".ChemWrap").html( ChemDataObj.ChemEqHtmlDropDown );
         console.log("GiveQuestions - ErrStr: " + ErrStr);
-        $(".ChemArrowWrap").html('<img id="ChemArrow" src="../../../library/img/glyphicon_reaktionspil_black2.svg" alt="Reaktionpil" />');
+        $(".ChemArrowWrap").html('<img id="ChemArrow" src="../library/img/glyphicon_reaktionspil_black2.svg" alt="Reaktionpil" />');
     });
 
     $( document ).on('click', ".CheckScore", function(event){
