@@ -64,3 +64,5 @@ h5{display: inline-block;}
 .container-fluid:nth-of-type(2) {
     margin-top: 0px;
 }
+
+.QuestionTask{margin-right: 3px;}
