@@ -696,7 +696,7 @@ function GiveQuestions(JsonData){
     console.log("GiveQuestions - QuizArray 3: " + QuizArray);
     var QuizNum = QuizArray[QuestionNum];
 
-    $(".QuestionCounter").html(String(QuestionNum+1)+"/"+String(QuizArray.length));
+    $(".QuestionCounter").html(String(QuestionNum)+"/"+String(QuizArray.length));
     // ChemLatexToHtml( JsonData[QuestionNum].ChemEq );
     ChemLatexToHtml( JsonData[QuizNum].ChemEq );
     $(".ChemWrap").html( ChemDataObj.ChemEqHtmlDropDown );
@@ -717,14 +717,19 @@ function GiveQuestions(JsonData){
             ErrStr += "B ";
             if ( ChemDataObj.NumOfCorrectAnswers == ReturnNumOfAnswers() ){
                 // $("#UserBtn").text("Næste spørgsmål");
+                ++QuestionNum;
+                $(".QuestionCounter").html(String(QuestionNum)+"/"+String(QuizArray.length));
                 FadeTextToNewText("#UserBtn", "Næste spørgsmål");
                 $("#UserBtn").toggleClass("CheckAnswer NextQuestion");
                 ErrStr += "C ";
                 $("#QuestionTask").html("Du har afstemt reaktionen rigtigt.");
+
             } else {
                 $("#QuestionTask").html("De valgte værdier passer ikke, prøv igen.");
             }
         } else {
+            ++QuestionNum;
+            $(".QuestionCounter").html(String(QuestionNum)+"/"+String(QuizArray.length));
             if ( ChemDataObj.NumOfCorrectAnswers == ReturnNumOfAnswers() ){
                 // $("#UserBtn").text("Se din score");
                 FadeTextToNewText("#UserBtn", "Se din score");
@@ -752,10 +757,10 @@ function GiveQuestions(JsonData){
         ErrStr += "E ";
 
         ResetQuiz();
-        ++QuestionNum;
+        // ++QuestionNum;
         console.log("GiveQuestions - QuestionNum: " + QuestionNum);
         // $(".QuestionCounter").text(String(QuestionNum+1)+"/"+String(ReturnNumOfQuestions()));
-        $(".QuestionCounter").html(String(QuestionNum+1)+"/"+String(QuizArray.length));
+        // $(".QuestionCounter").html(String(QuestionNum)+"/"+String(QuizArray.length));
         QuizNum = QuizArray[QuestionNum];
         ChemLatexToHtml( JsonData[QuizNum].ChemEq );
         $(".ChemWrap").html( ChemDataObj.ChemEqHtmlDropDown );
