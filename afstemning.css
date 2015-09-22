@@ -1,6 +1,6 @@
 body{line-height: 1; }
 
-h1{margin: 40px 30px; padding: 0px; line-height: 0;}
+h1{padding: 0px;}
 
 /*h4{margin: 0px;}*/
 h4{display: inline-block; margin: 0px;}
@@ -22,7 +22,7 @@ h5{display: inline-block;}
 .Reactants{}
 .ChemWrap {font-size: 250%; font-weight: 200; margin-top: 20px; margin-left: 0px;}
 .BtnWrap{margin-top: 30px;}
-.InstructionWrap{margin-top: 0%; margin-left: 60px;}
+.InstructionWrap{margin-top: 0%; margin-left: 0px;}
 
 .ChemArrowWrap{}
 #ChemArrow{width: 5%; }
