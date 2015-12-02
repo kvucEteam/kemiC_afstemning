@@ -818,6 +818,24 @@ function SetProgramPerameter(UlrVarObj){
     console.log("SetProgramPerameter - ReturnURLPerameters - Level: " + Level ); 
 }
 
+//////////////////////////////////////////////////////////////////////////////////////////  
+//   ADDED d. 1/12-2015 to prevent the program from breaking when iframed in moodle
+//////////////////////////////////////////////////////////////////////////////////////////
+
+
+$(window).load(function () {
+    $(".ChemWrap").css("font-size",String( Math.round(150 + (100/445)*($(".ChemWrap").parent().width() - 719) ) ) + "%");  // 150% at 719 px is the maxsimum width before the longest equation breakes in moodle. Maximum is at 250% at 1164 px.
+    $(".IndexNum").css("margin-left",String( Math.round(2 + (3/445)*($(".ChemWrap").parent().width() - 719) ) ) + "px");   
+    $(".IndexNum").css("margin-right",String( Math.round(2 + (3/445)*($(".ChemWrap").parent().width() - 719) ) ) + "px");
+});
+
+$(window).resize(function () {
+    $(".ChemWrap").css("font-size",String( Math.round(150 + (100/445)*($(".ChemWrap").parent().width() - 719) ) ) + "%");  // 150% at 719 px is the maxsimum width before the longest equation breakes in moodle. Maximum is at 250% at 1164 px.
+    $(".IndexNum").css("margin-left",String( Math.round(2 + (3/445)*($(".ChemWrap").parent().width() - 719) ) ) + "px");
+    $(".IndexNum").css("margin-right",String( Math.round(2 + (3/445)*($(".ChemWrap").parent().width() - 719) ) ) + "px");
+});
+
+
 
 //########################################################################
 //                        Quiz data...
