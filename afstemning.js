@@ -692,7 +692,7 @@ function GiveQuestions(JsonData){
 
     QuizArray = ReturnQuizArray(JsonData);
     console.log("GiveQuestions - QuizArray 1: " + QuizArray);
-    // QuizArray = ShuffelArray(QuizArray);
+    QuizArray = ShuffelArray(QuizArray);
     console.log("GiveQuestions - QuizArray 2: " + QuizArray);
     QuizArray = ReturMaxNumOfElements(QuizArray, MaxNumOfElements);
     console.log("GiveQuestions - QuizArray 3: " + QuizArray);
