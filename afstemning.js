@@ -623,7 +623,8 @@ function ShowStudentScore(Use_UserMsgBox){
 
     if (Use_UserMsgBox) 
         // UserMsgBox("body", "Du klarede det med " + TotScoreObj.TotNumOfWrongAnswers + " fejl Se resultaterne her <br/>");
-        UserMsgBox("body", "<span class='feedbackbox_txtstyle_overskrift'>Flot</span><br/>Du har lavet "+MaxNumOfElements+" opgaver korrekt. <br/> Du havde " + TotScoreObj.NewTotNumOfWrongAnswers + ' fejl undervejs. <br/><br/>Klik på "Prøv igen" knappen for at løse '+MaxNumOfElements+' nye opgaver.');
+        // UserMsgBox("body", "<span class='feedbackbox_txtstyle_overskrift'>Flot</span><br/>Du har lavet "+MaxNumOfElements+" opgaver korrekt. <br/> Du havde " + TotScoreObj.NewTotNumOfWrongAnswers + ' fejl undervejs. <br/><br/>Klik på "Prøv igen" knappen for at løse '+MaxNumOfElements+' nye opgaver.');  // COMMENTED OUT d. 04-01-2018
+        UserMsgBox("body", "<span class='feedbackbox_txtstyle_overskrift'>Flot</span><br/>Du har lavet "+QuizArray.length+" opgaver korrekt. <br/> Du havde " + TotScoreObj.NewTotNumOfWrongAnswers + ' fejl undervejs. <br/><br/>Klik på "Prøv igen" knappen for at løse '+QuizArray.length+' nye opgaver.');  // ADDED d. 04-01-208
     else
         $(".ShowStudentScore").html( HTML );
 
@@ -671,10 +672,11 @@ function ReturnQuizArray(JsonData){
 
 
 function ReturMaxNumOfElements(PrincipleArray, MaxNumOfElements){
-    if (PrincipleArray.length > MaxNumOfElements)
+    if (PrincipleArray.length > MaxNumOfElements) {
         return PrincipleArray.slice(0, MaxNumOfElements);
-    else
+    } else {
         return PrincipleArray;
+    }
 }
 console.log("ReturMaxNumOfElements: " + ReturMaxNumOfElements([0,1,2,3,4,5,6,7,8,9], 6) );
 
@@ -690,7 +692,7 @@ function GiveQuestions(JsonData){
 
     QuizArray = ReturnQuizArray(JsonData);
     console.log("GiveQuestions - QuizArray 1: " + QuizArray);
-    QuizArray = ShuffelArray(QuizArray);
+    // QuizArray = ShuffelArray(QuizArray);
     console.log("GiveQuestions - QuizArray 2: " + QuizArray);
     QuizArray = ReturMaxNumOfElements(QuizArray, MaxNumOfElements);
     console.log("GiveQuestions - QuizArray 3: " + QuizArray);
@@ -823,7 +825,8 @@ function SetProgramPerameter(UlrVarObj){
 //////////////////////////////////////////////////////////////////////////////////////////
 
 
-$(window).load(function () {
+// $(window).load(function () {  // COMMENTED OUT d. 04-01-2018  -  "load()" is no longer a part of JQuery...
+$(document).ready(function () {  // ADDED d. 04-01-2018
     $(".ChemWrap").css("font-size",String( Math.round(150 + (100/445)*($(".ChemWrap").parent().width() - 719) ) ) + "%");  // 150% at 719 px is the maxsimum width before the longest equation breakes in moodle. Maximum is at 250% at 1164 px.
     $(".IndexNum").css("margin-left",String( Math.round(2 + (3/445)*($(".ChemWrap").parent().width() - 719) ) ) + "px");   
     $(".IndexNum").css("margin-right",String( Math.round(2 + (3/445)*($(".ChemWrap").parent().width() - 719) ) ) + "px");

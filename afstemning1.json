@@ -1,6 +1,6 @@
-[{"ChemEq" : "H_2 + F_2 ---> #2HF; 0:3 "},
+[{"ChemEq" : "2P + 3Br_2 ---> 2PBr_{#3}; 0:5 "},
+{"ChemEq" : "H_2 + F_2 ---> #2HF; 0:3 "},
 {"ChemEq" : "#2Na + Cl_2 ---> 2NaCl; 0:3 "},
-{"ChemEq" : "P + Br_2 ---> PBr_{#2}; 0:3 "},
 {"ChemEq" : "H_2 + Br_2 ---> #2HBr; 0:3 "},
 {"ChemEq" : "2CO + O_2 ---> #2CO_2; 0:5"},
 {"ChemEq" : "#2Mg + O_2 ---> 2MgO; 0:3 "}]
